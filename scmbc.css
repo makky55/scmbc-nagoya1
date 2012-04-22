@@ -3,3 +3,20 @@ pre {
 	border: 1px solid silver;
 	padding: 0.5em;
 }
+
+body {
+	padding: 0px 50px;
+}
+
+h1 {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+
+h2 {
+	border-left: 10px solid #f48;
+}
+
+h3 {
+	border-left: 5px solid #f48;
+}
