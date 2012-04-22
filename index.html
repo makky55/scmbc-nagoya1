@@ -31,5 +31,31 @@ git push origin master
 
     <h2>履歴をたどる</h2>
     <div>git log: HEAD からたどれるコミットの履歴を見る</div>
+
+    <div>
+      <h2>リポジトリの新規作成(Githubの場合)</h2>
+      <p>githubにログイン</p>
+      <p>【New Repository】ボタンにてリポジトリを作成<p>
+      
+      <pre>
+      mkdir [プロジェクトフォルダ]
+      cd [プロジェクトフォルダ]
+      git init
+      git remote add origin git@github.com:[アカウント名]/[リポジトリ名].git
+      </pre>
+    </div>
+    
+    <div>
+      <h2>プロジェクト(リポジトリ)に参加する場合(Githubの場合)</h2>
+      <pre>
+      cd [作業フォルダ]
+      git clone git@github.com:[アカウント名]/[リポジトリ名].git
+      </pre>
+    </div>
+
+
+
+
+
 </body>
 </html>
