@@ -1,24 +1,22 @@
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Git cheet sheet</title>
+    <meta charset="UTF-8">
+    <title>Git cheet sheet</title>
 </head>
 <body>
     <h1>Git cheet sheet</h1>
     <h2>実行結果を試してみる</h2>
-    <div>
+    <p>
         Gitでコマンドを試しに実行して結果を見たい場合、ブランチを作成してそのブランチで試してみればいい。
-        未コミットの作業がない場合は、
-        <pre>
-        git checkout -b trial
-        </pre>
+    </p>
+    <h3>未コミットの作業が無い場合</h3>
+    <div>
+        <pre>git checkout -b trial</pre>
         などとして、まずは作業用のブランチを作成する。
         その後、コマンドを試しに実行し、結果を見る。
         試した結果を破棄して元の作業に戻るためには、
-        <pre>
-        git checkout 元のブランチ
-        </pre>
+        <pre>git checkout 元のブランチ</pre>
         とする。
     </div>
 </body>
