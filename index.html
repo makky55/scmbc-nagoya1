@@ -17,6 +17,10 @@
 	<pre>$ git revert ＜コミット名＞</pre>
   <h2>help</h2>
   <pre>git help コマンド名</pre>
+  <h2>init</h2>
+  <p>Gitリポジトリを新規作成する。</p>
+  <pre>git init リポジトリ名</pre>
+  <p>ベアリポジトリを作成する場合は<code>--bare</code>を指定する。</p>
 
 	<h1>Git cheet sheet</h1>
 
@@ -244,10 +248,10 @@ git push origin :[消したいブランチ名]</pre>
                 <div>
                   <h2>他の人と、更新内容がぶつかってしまった時の対処</h2>
 
-                  ケース1: pull したときに、自分が編集中のファイルとぶつかった場合<br />
+                  pull したときに、自分が編集中のファイルとぶつかった場合<br />
                   自分があるファイルを編集していた時に、git pull したら、以下のようなメッセージが表示された時。<br />
 <pre>
-$ gipull
+$ git pull
 remo: Counting objects: 5, done.
 remo: Compressing objects: 100% (2/2), done.
 remo: Total 3 (delta 0), reused 0 (delta 0)
@@ -258,20 +262,17 @@ Updang 62ee226..60e86cc
 erro Your local changes to the following files would be overwritten by merge:
 aa.txt
 Plea, commit your changes or stash them before you can merge.
-Aborng
-</pre>
+Aborng</pre>
                   <ul>
                     <li>
                     1.とりあえず編集中のファイルをコミットする。
 <pre>
-$ git commit aa.txt
-</pre>
+$ git commit aa.txt</pre>
                     </li>
                     <li>
                     2.git push する。
 <pre>
-$ git pull
-</pre>
+$ git pull</pre>
                     すると、以下のように表示され、push がreject される。
 <pre>
 $ git push
@@ -280,14 +281,12 @@ To {pull元のリポジトリのURL}
 error: failed to push some refs to '{pull元のリポジトリのURL}'
 To prevent you from losing history, non-fast-forward updates were rejected
 Merge the remote changes (e.g. 'git pull') before pushing again.  See the
-'Note about fast-forwards' section of 'git push --help' for details.
-</pre>
+'Note about fast-forwards' section of 'git push --help' for details.</pre>
                     </li>
                     <li>
                     3.git pull でいったん取り込む。git が自動的にmergeしようとして、コンフリクトが発生する。
 <pre>
-$ git pull
-</pre>
+$ git pull</pre>
                     すると、以下のように表示される。
 <pre>
 $ git pull
@@ -299,8 +298,7 @@ From {pull元のリポジトリのURL}
 2e7b786..737f7e9  master     -&gt; origin/master
 Auto-merging aa.txt
 CONFLICT (content): Merge conflict in aa.txt
-Automatic merge failed; fix conflicts and then commit the result.
-</pre>
+Automatic merge failed; fix conflicts and then commit the result.</pre>
                     </li>
                     <li>
                     4.エディタで対象ファイルを開いて、手作業でコンフリクトを修正して解決する。
@@ -309,14 +307,12 @@ Automatic merge failed; fix conflicts and then commit the result.
                     5.git add, git commit して、ローカルリポジトリにコミットする。
 <pre>
 $ git add aa.txt
-$ git commit aa.txt
-</pre>
+$ git commit aa.txt</pre>
                     </li>
                     <li>
                     6.git push して、リモートリポジトリに push する。
 <pre>
-$ git push
-</pre>
+$ git push</pre>
                     リモート側で更新が発生していなければ、pushが成功する。
                     </li>
                  </ul>
