@@ -155,78 +155,106 @@ git push origin master
       </pre>
     </div>
 
-  <div>
-    <h2>他の人と、更新内容がぶつかってしまった時の対処</h2>
-  
-      ケース1: pull したときに、自分が編集中のファイルとぶつかった場合<br />
-      自分があるファイルを編集していた時に、git pull したら、以下のようなメッセージが表示された時。<br />
-      <pre>
-  $ gipull
-  remo: Counting objects: 5, done.
-  remo: Compressing objects: 100% (2/2), done.
-  remo: Total 3 (delta 0), reused 0 (delta 0)
-  Unpaing objects: 100% (3/3), done.
-  Frompull元のリポジトリのURL}
-     6e226..60e86cc  master     -> origin/master
-  Updang 62ee226..60e86cc
-  erro Your local changes to the following files would be overwritten by merge:
-        aa.txt
-  Plea, commit your changes or stash them before you can merge.
-  Aborng
-      </pre>
-      <ul>
-        <li>
-          1.とりあえず編集中のファイルをコミットする。
-          <pre>
-  $ git commit aa.txt
-          </pre>
-        </li>
-        <li>
-          2.git push する。
-          <pre>
-  $ git pull
-          </pre>
-          すると、以下のように表示され、push がreject される。
-          <pre>
-  $ git push
-  To {pull元のリポジトリのURL}
-   ! [rejected]        master -> master (non-fast-forward)
-  error: failed to push some refs to '{pull元のリポジトリのURL}'
-  To prevent you from losing history, non-fast-forward updates were rejected
-  Merge the remote changes (e.g. 'git pull') before pushing again.  See the
-  'Note about fast-forwards' section of 'git push --help' for details.
-          </pre>
-        </li>
-        <li>
-          3.git pull でいったん取り込む。git が自動的にmergeしようとして、コンフリクトが発生する。
-          <pre>
-  $ git pull
-          </pre>
-          すると、以下のように表示される。
-          <pre>
-  $ git pull
-  remote: Counting objects: 5, done.
-  remote: Compressing objects: 100% (2/2), done.
-  remote: Total 3 (delta 0), reused 0 (delta 0)
-  Unpacking objects: 100% (3/3), done.
-  From {pull元のリポジトリのURL}
-     2e7b786..737f7e9  master     -> origin/master
-  Auto-merging aa.txt
-  CONFLICT (content): Merge conflict in aa.txt
-  Automatic merge failed; fix conflicts and then commit the result.
-          </pre>
-        </li>
-        <li>
-          4.エディタで対象ファイルを開いて、手作業でコンフリクトを修正して解決する。
-        </li>
-        <li>
-          5.git add, git commit して、ローカルリポジトリにコミットする。
-          <pre>
-  $ git add aa.txt
-  $ git commit aa.txt
-          </pre>
-        </li>
-  </div>
-
+    <div>
+      <h2>実行結果を試してみる</h2>
+      <p>
+        Gitでコマンドを試しに実行して結果を見たい場合、ブランチを作成してそのブランチで試してみればいい。
+      </p>
+      <h3>未コミットの作業が無い場合</h3>
+      <div>
+        <pre>git checkout -b trial</pre>
+        などとして、まずは作業用のブランチを作成する。
+        その後、コマンドを試しに実行し、結果を見る。
+        試した結果を破棄して元の作業に戻るためには、
+        <pre>git checkout 元のブランチ</pre>
+        とする。
+      </div>
+      <h3>未コミットの作業がある場合</h3>
+      <div>
+        未コミットの作業がある場合、その作業を退避させる必要がある。
+        そのために、
+        <ul>
+          <li>git stash</li>
+          <li>git commit</li>
+        </ul>
+        の2つの方法が考えられる。
+        stashは手軽だが、操作を誤ると簡単に作業を失ってしまうという欠点がある。
+        commitは面倒だが、操作を誤っても簡単にそれを取り戻せる。
+        <code>reset --hard</code>に抵抗が無ければ、commitしてしまうことを推奨する。
+        一旦作業を退避させた後は、未コミット作業がなくなるため、先の方法を使えばいい。
+      </div>
+    </div>
+    <div>
+      <h2>他の人と、更新内容がぶつかってしまった時の対処</h2>
+    
+        ケース1: pull したときに、自分が編集中のファイルとぶつかった場合<br />
+        自分があるファイルを編集していた時に、git pull したら、以下のようなメッセージが表示された時。<br />
+        <pre>
+          $ gipull
+          remo: Counting objects: 5, done.
+          remo: Compressing objects: 100% (2/2), done.
+          remo: Total 3 (delta 0), reused 0 (delta 0)
+          Unpaing objects: 100% (3/3), done.
+          Frompull元のリポジトリのURL}
+          6e226..60e86cc  master     -> origin/master
+          Updang 62ee226..60e86cc
+          erro Your local changes to the following files would be overwritten by merge:
+          aa.txt
+          Plea, commit your changes or stash them before you can merge.
+          Aborng
+        </pre>
+        <ul>
+          <li>
+            1.とりあえず編集中のファイルをコミットする。
+            <pre>
+              $ git commit aa.txt
+            </pre>
+          </li>
+          <li>
+            2.git push する。
+            <pre>
+              $ git pull
+            </pre>
+            すると、以下のように表示され、push がreject される。
+            <pre>
+              $ git push
+              To {pull元のリポジトリのURL}
+              ! [rejected]        master -> master (non-fast-forward)
+              error: failed to push some refs to '{pull元のリポジトリのURL}'
+              To prevent you from losing history, non-fast-forward updates were rejected
+              Merge the remote changes (e.g. 'git pull') before pushing again.  See the
+              'Note about fast-forwards' section of 'git push --help' for details.
+            </pre>
+          </li>
+          <li>
+            3.git pull でいったん取り込む。git が自動的にmergeしようとして、コンフリクトが発生する。
+            <pre>
+              $ git pull
+            </pre>
+            すると、以下のように表示される。
+            <pre>
+              $ git pull
+              remote: Counting objects: 5, done.
+              remote: Compressing objects: 100% (2/2), done.
+              remote: Total 3 (delta 0), reused 0 (delta 0)
+              Unpacking objects: 100% (3/3), done.
+              From {pull元のリポジトリのURL}
+              2e7b786..737f7e9  master     -> origin/master
+              Auto-merging aa.txt
+              CONFLICT (content): Merge conflict in aa.txt
+              Automatic merge failed; fix conflicts and then commit the result.
+            </pre>
+          </li>
+          <li>
+            4.エディタで対象ファイルを開いて、手作業でコンフリクトを修正して解決する。
+          </li>
+          <li>
+            5.git add, git commit して、ローカルリポジトリにコミットする。
+            <pre>
+              $ git add aa.txt
+              $ git commit aa.txt
+            </pre>
+          </li>
+    </div>
 </body>
 </html>
