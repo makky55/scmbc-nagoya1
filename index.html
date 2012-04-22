@@ -291,14 +291,14 @@ $ git push
     <div>
       <h2>分岐した作業履歴をひとつに統合する</h2>
       <pre>
-      1つにしたいブランチに作業ブランチを移動
-      git rebase [くっつけるブランチ(元)] [くっつくブランチ]
+      作業ブランチに移動
+      git rebase [くっつけるブランチ]
       </pre>
     
       <h3>衝突してしまった場合の対処</h3>
       <h4>衝突してしまった例</h4>
       <pre>
-      $ git rebase master [ブランチ名] 
+      $ git rebase master
       First, rewinding head to replay your work on top of it...
       Applying: コミット内容文
       Using index info to reconstruct a base tree...
