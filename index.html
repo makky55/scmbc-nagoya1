@@ -38,8 +38,7 @@ git push origin master
         <h3>HEAD からたどれるコミットの履歴を見る</h3>
         <pre>
         git log
-        例：git log
-        </pre>
+        例：git log</pre>
 
         <h3>あるブランチからたどれるコミットの履歴を見る</h3>
         <pre>
@@ -51,8 +50,7 @@ git push origin master
         <pre>
         git reflog [ブランチ名]
         例：git reflog master
-        ※ ブランチ名を省略すると HEAD
-        </pre>
+        ※ ブランチ名を省略すると HEAD</pre>
     </div>
 <div>
   <h2>元に戻す</h2>
@@ -96,8 +94,7 @@ git push origin master
   </table>
   <h3>pushしたものを戻す[revert]</h3>
   <pre>
-    git revert [hash]
-  </pre>
+    git revert [hash]</pre>
   <p>hashのコミットを打ち消すコミットを新たに作る</p>
 </div>
     <div>
@@ -109,16 +106,14 @@ git push origin master
       mkdir [プロジェクトフォルダ]
       cd [プロジェクトフォルダ]
       git init
-      git remote add origin git@github.com:[アカウント名]/[リポジトリ名].git
-      </pre>
+      git remote add origin git@github.com:[アカウント名]/[リポジトリ名].git</pre>
     </div>
     
     <div>
       <h2>プロジェクト(リポジトリ)に参加する場合(Githubの場合)</h2>
       <pre>
       cd [作業フォルダ]
-      git clone git@github.com:[アカウント名]/[リポジトリ名].git
-      </pre>
+      git clone git@github.com:[アカウント名]/[リポジトリ名].git</pre>
     </div>
 
     <div>
@@ -126,33 +121,28 @@ git push origin master
       <h3>ファイル単位で追加する場合</h3>
       <pre>
       git add [ファイル名]
-      例：git add hoge.txt
-      </pre>
+      例：git add hoge.txt</pre>
     
       <h3>フォルダ単位で追加する場合</h3>
       <pre>
       git add [フォルダ名]/.
-      例：git add hogedir/.
-      </pre>
+      例：git add hogedir/. </pre>
     
       <h2>変更点をコミットする</h2>
       <pre>
-      git commit -m 'コミット内容'
-      </pre>
+      git commit -m 'コミット内容'</pre>
     </div>
 
     <div>
       <h2>公開リポジトリに自分のリポジトリの内容を送信する</h2>
       <pre>
-      git push -u origin master
-      </pre>
+      git push -u origin master</pre>
     </div>
 
     <div>
       <h2>リモートリポジトリのブランチを削除する</h2>
       <pre>
-        git push origin :[消したいブランチ名]
-      </pre>
+        git push origin :[消したいブランチ名]</pre>
     </div>
 
     <div>
