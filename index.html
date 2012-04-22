@@ -219,7 +219,7 @@ remo: Compressing objects: 100% (2/2), done.
 remo: Total 3 (delta 0), reused 0 (delta 0)
 Unpaing objects: 100% (3/3), done.
 Frompull元のリポジトリのURL}
-6e226..60e86cc  master     -> origin/master
+6e226..60e86cc  master     -&gt; origin/master
 Updang 62ee226..60e86cc
 erro Your local changes to the following files would be overwritten by merge:
 aa.txt
@@ -242,7 +242,7 @@ $ git pull
 <pre>
 $ git push
 To {pull元のリポジトリのURL}
-! [rejected]        master -> master (non-fast-forward)
+! [rejected]        master -&gt; master (non-fast-forward)
 error: failed to push some refs to '{pull元のリポジトリのURL}'
 To prevent you from losing history, non-fast-forward updates were rejected
 Merge the remote changes (e.g. 'git pull') before pushing again.  See the
@@ -262,7 +262,7 @@ remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0)
 Unpacking objects: 100% (3/3), done.
 From {pull元のリポジトリのURL}
-2e7b786..737f7e9  master     -> origin/master
+2e7b786..737f7e9  master     -&gt; origin/master
 Auto-merging aa.txt
 CONFLICT (content): Merge conflict in aa.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -278,6 +278,62 @@ $ git add aa.txt
 $ git commit aa.txt
 </pre>
                     </li>
-                  </div>
-                </body>
-              </html>
+                    <li>
+                    6.git push して、リモートリポジトリに push する。
+<pre>
+$ git push
+</pre>
+                    リモート側で更新が発生していなければ、pushが成功する。
+                    </li>
+                 </ul>
+    </div>
+      
+    <div>
+      <h2>分岐した作業履歴をひとつに統合する</h2>
+      <pre>
+      1つにしたいブランチに作業ブランチを移動
+      git rebase [くっつけるブランチ(元)] [くっつくブランチ]
+      </pre>
+    
+      <h3>衝突してしまった場合の対処</h3>
+      <h4>衝突してしまった例</h4>
+      <pre>
+      $ git rebase master [ブランチ名] 
+      First, rewinding head to replay your work on top of it...
+      Applying: コミット内容文
+      Using index info to reconstruct a base tree...
+      <stdin>:18: trailing whitespace.
+    
+      warning: 1 line adds whitespace errors. 
+      Falling back to patching base and 3-way merge...
+      Auto-merging index.html
+      CONFLICT (content): Merge conflict in index.html
+      Failed to merge in the changes.
+      Patch failed at 0001 リポジトリの新規作成の説明を追加
+    
+      When you have resolved this problem run "git rebase --continue".
+      If you would prefer to skip this patch, instead run "git rebase --skip".
+      To restore the original branch and stop rebasing run "git rebase --abort".
+      </pre>
+    
+      <p>上記の例の場合は『index.html』が衝突しています</p>
+      <p>『index.html』の内容を修正</p>
+      <pre>
+      vim index.html
+      </pre>
+    
+      <p>修正後、変更点を追加してrebaseを続けます</p>
+      <pre>
+      git add index.html
+      gir rebase --continue
+      </pre>
+      <p>※衝突するたびに上記修正を行なっています</p>  
+    
+      <p>どうしてもわからなくなったり、意味不明な事になったらもとに戻す</p>
+      <pre>
+      git rebase --abort
+      </pre>
+    </div>
+
+</body>
+</html>
