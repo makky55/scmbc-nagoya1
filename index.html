@@ -28,7 +28,6 @@ git push origin master
 
 </div>
 
-
     <h2>履歴をたどる</h2>
     <div>git log: HEAD からたどれるコミットの履歴を見る</div>
 <div>
@@ -68,5 +67,53 @@ git push origin master
     </tbody>
   </table>
 </div>
+    <div>
+      <h2>リポジトリの新規作成(Githubの場合)</h2>
+      <p>githubにログイン</p>
+      <p>【New Repository】ボタンにてリポジトリを作成<p>
+      
+      <pre>
+      mkdir [プロジェクトフォルダ]
+      cd [プロジェクトフォルダ]
+      git init
+      git remote add origin git@github.com:[アカウント名]/[リポジトリ名].git
+      </pre>
+    </div>
+    
+    <div>
+      <h2>プロジェクト(リポジトリ)に参加する場合(Githubの場合)</h2>
+      <pre>
+      cd [作業フォルダ]
+      git clone git@github.com:[アカウント名]/[リポジトリ名].git
+      </pre>
+    </div>
+
+    <div>
+      <h2>コミットするファイルを指定する</h2>
+      <h3>ファイル単位で追加する場合</h3>
+      <pre>
+      git add [ファイル名]
+      例：git add hoge.txt
+      </pre>
+    
+      <h3>フォルダ単位で追加する場合</h3>
+      <pre>
+      git add [フォルダ名]/.
+      例：git add hogedir/.
+      </pre>
+    
+      <h2>変更点をコミットする</h2>
+      <pre>
+      git commit -m 'コミット内容'
+      </pre>
+    </div>
+
+    <div>
+      <h2>公開リポジトリに自分のリポジトリの内容を送信する</h2>
+      <pre>
+      git push -u origin master
+      </pre>
+    </div>
+
 </body>
 </html>
