@@ -5,5 +5,42 @@
   <title>Git cheet sheet</title>
 </head>
 <body>
+<div>
+  <h2>元に戻す</h2>
+  <h3>ローカルでの変更をなかったことにする[checkout]</h3>
+  <p>git checkout FILEPATH</p>
+  <h3>ローカルでの変更をなかったことにする[reset]</h3>
+  <p>git reset [--soft / --mixed / --hard]</p>
+  <table>
+    <thead>
+      <tr>
+        <th>option</th>
+        <th>repositry</th>
+        <th>index</th>
+        <th>local</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>--soft</td>
+        <td>戻る</td>
+        <td>そのまま</td>
+        <td>そのまま</td>
+      </tr>
+      <tr>
+        <td>--mixed(default)</td>
+        <td>戻る</td>
+        <td></td>
+        <td>そのまま</td>
+      </tr>
+      <tr>
+        <td>--hard</td>
+        <td>戻る</td>
+        <td>戻る</td>
+        <td>戻る</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
