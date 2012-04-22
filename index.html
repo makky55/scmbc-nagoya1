@@ -6,7 +6,26 @@
     <link rel="stylesheet" href="scmbc.css" />
   </head>
   <body>
-    <h1>Git cheet sheet</h1>
+  
+    <h1>Git commnad</h1>
+
+	<h2>revert</h2>
+	<p>「git revert」は作業ツリーを指定したコミット時点の状態にまで戻し、コミットを行うコマンドである。引数にはコミットを指定するハッシュ文字列もしくはタグ名などを指定する。
+	git revertはgit resetと似ているが、作業ツリーを差し戻したという情報が作業履歴に残るのが異なる点。
+	</p>
+	<pre>$ git revert ＜コミット名＞</pre>
+
+	<h1>Git cheet sheet</h1>
+
+    <div>
+       <h2>merge</h2>
+       <p>マージ</p>
+       <p>作業ブランチに移動してから、変更点の取り込み元ブランチを選択</p>
+       <pre>
+       git checkout master
+       git merge hotfix 
+       </pre>
+     </div>
 
 	<h2>1つのリモートブランチで複数人が作業をする。</h2>
 	<div>
