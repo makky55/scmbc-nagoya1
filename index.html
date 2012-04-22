@@ -3,8 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Git cheet sheet</title>
+  <link rel="stylesheet" href="scmbc.css" />
 </head>
 <body>
+    <h1>Git cheet sheet</h1>
+
+<div>
+ローカルリポジトリをリモートにpushする。
+
+コマンド書式
+<pre>
+git push [remote-name] [branch-name]
+</pre>
+
+branch-nameをremote-nameにpushする。
+
+例：master ブランチの内容を origin サーバー にpushしたい場合
+<pre>
+git push origin master
+</pre>
+
+
+</div>
+
+
+    <h2>履歴をたどる</h2>
+    <div>git log: HEAD からたどれるコミットの履歴を見る</div>
 <div>
   <h2>元に戻す</h2>
   <h3>ローカルでの変更をなかったことにする[checkout]</h3>
