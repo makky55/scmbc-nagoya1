@@ -1,39 +1,39 @@
 <!DOCTYPE HTML>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Git cheet sheet</title>
-  <link rel="stylesheet" href="scmbc.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Git cheet sheet</title>
+    <link rel="stylesheet" href="scmbc.css" />
+  </head>
+  <body>
     <h1>Git cheet sheet</h1>
 
 
-<h2>
-ローカルリポジトリをリモートにpushする。
-</h2>
-<div>
-<p>
-コマンド書式
-</p>
+    <h2>
+      ローカルリポジトリをリモートにpushする。
+    </h2>
+    <div>
+      <p>
+      コマンド書式
+      </p>
 <pre>
 git push [remote-name] [branch-name]
 </pre>
-<p>
-branch-nameをremote-nameにpushする。
-</p>
+      <p>
+      branch-nameをremote-nameにpushする。
+      </p>
 
-<p>
-例：master ブランチの内容を origin サーバー にpushしたい場合
-</p>
+      <p>
+      例：master ブランチの内容を origin サーバー にpushしたい場合
+      </p>
 <pre>
 git push origin master
 </pre>
 
 
-</div>
+      </div>
 
-    <div>
+      <div>
         <h2>履歴をたどる</h2>
         <h3>HEAD からたどれるコミットの履歴を見る</h3>
         <pre>
@@ -51,111 +51,111 @@ git push origin master
         git reflog [ブランチ名]
         例：git reflog master
         ※ ブランチ名を省略すると HEAD</pre>
-    </div>
-<div>
-  <h2>元に戻す</h2>
-  <h3>ローカルでの変更をなかったことにする[checkout]</h3>
-  <pre>
+        </div>
+        <div>
+          <h2>元に戻す</h2>
+          <h3>ローカルでの変更をなかったことにする[checkout]</h3>
+          <pre>
     git checkout FILEPATH
   </pre>
-  <h3>ローカルでの変更をなかったことにする[reset]</h3>
-  <pre>
+          <h3>ローカルでの変更をなかったことにする[reset]</h3>
+          <pre>
     git reset [--soft / --mixed / --hard]
   </pre>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>option</th>
-        <th>repositry</th>
-        <th>index</th>
-        <th>local</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>--soft</td>
-        <td>戻る</td>
-        <td>そのまま</td>
-        <td>そのまま</td>
-      </tr>
-      <tr>
-        <td>--mixed(default)</td>
-        <td>戻る</td>
-        <td></td>
-        <td>そのまま</td>
-      </tr>
-      <tr>
-        <td>--hard</td>
-        <td>戻る</td>
-        <td>戻る</td>
-        <td>戻る</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3>pushしたものを戻す[revert]</h3>
-  <pre>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>option</th>
+                <th>repositry</th>
+                <th>index</th>
+                <th>local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>--soft</td>
+                <td>戻る</td>
+                <td>そのまま</td>
+                <td>そのまま</td>
+              </tr>
+              <tr>
+                <td>--mixed(default)</td>
+                <td>戻る</td>
+                <td></td>
+                <td>そのまま</td>
+              </tr>
+              <tr>
+                <td>--hard</td>
+                <td>戻る</td>
+                <td>戻る</td>
+                <td>戻る</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>pushしたものを戻す[revert]</h3>
+          <pre>
     git revert [hash]</pre>
-  <p>hashのコミットを打ち消すコミットを新たに作る</p>
-</div>
-    <div>
-      <h2>リポジトリの新規作成(Githubの場合)</h2>
-      <p>githubにログイン</p>
-      <p>【New Repository】ボタンにてリポジトリを作成<p>
-      
-      <pre>
+          <p>hashのコミットを打ち消すコミットを新たに作る</p>
+        </div>
+        <div>
+          <h2>リポジトリの新規作成(Githubの場合)</h2>
+          <p>githubにログイン</p>
+          <p>【New Repository】ボタンにてリポジトリを作成<p>
+
+          <pre>
       mkdir [プロジェクトフォルダ]
       cd [プロジェクトフォルダ]
       git init
       git remote add origin git@github.com:[アカウント名]/[リポジトリ名].git</pre>
-    </div>
-    
-    <div>
-      <h2>プロジェクト(リポジトリ)に参加する場合(Githubの場合)</h2>
-      <pre>
+          </div>
+
+          <div>
+            <h2>プロジェクト(リポジトリ)に参加する場合(Githubの場合)</h2>
+            <pre>
       cd [作業フォルダ]
       git clone git@github.com:[アカウント名]/[リポジトリ名].git</pre>
-    </div>
+            </div>
 
-    <div>
-      <h2>コミットするファイルを指定する</h2>
-      <h3>ファイル単位で追加する場合</h3>
-      <pre>
+            <div>
+              <h2>コミットするファイルを指定する</h2>
+              <h3>ファイル単位で追加する場合</h3>
+              <pre>
       git add [ファイル名]
       例：git add hoge.txt</pre>
-    
-      <h3>フォルダ単位で追加する場合</h3>
-      <pre>
+
+              <h3>フォルダ単位で追加する場合</h3>
+              <pre>
       git add [フォルダ名]/.
       例：git add hogedir/. </pre>
-    
-      <h2>変更点をコミットする</h2>
-      <pre>
+
+              <h2>変更点をコミットする</h2>
+              <pre>
       git commit -m 'コミット内容'</pre>
-    </div>
+              </div>
 
-    <div>
-      <h2>公開リポジトリに自分のリポジトリの内容を送信する</h2>
-      <pre>
+              <div>
+                <h2>公開リポジトリに自分のリポジトリの内容を送信する</h2>
+                <pre>
       git push -u origin master</pre>
-    </div>
+                </div>
 
-    <div>
-      <h2>リモートリポジトリのブランチを削除する</h2>
-      <pre>
+                <div>
+                  <h2>リモートリポジトリのブランチを削除する</h2>
+                  <pre>
         git push origin :[消したいブランチ名]</pre>
-    </div>
+                  </div>
 
-    <div>
-      <h2>実行結果を試してみる</h2>
-      <p>
-        Gitでコマンドを試しに実行して結果を見たい場合、ブランチを作成してそのブランチで試してみればいい。
-      </p>
-      <h3>未コミットの作業が無い場合</h3>
-      <div>
+                  <div>
+                    <h2>実行結果を試してみる</h2>
+                    <p>
+                    Gitでコマンドを試しに実行して結果を見たい場合、ブランチを作成してそのブランチで試してみればいい。
+                    </p>
+                    <h3>未コミットの作業が無い場合</h3>
+                    <div>
         <pre>git checkout -b trial</pre>
-        などとして、まずは作業用のブランチを作成する。
-        その後、コマンドを試しに実行し、結果を見る。
-        試した結果を破棄して元の作業に戻るためには、
+                    などとして、まずは作業用のブランチを作成する。
+                    その後、コマンドを試しに実行し、結果を見る。
+                    試した結果を破棄して元の作業に戻るためには、
         <pre>git checkout 元のブランチ</pre>
         とする。
       </div>
@@ -174,6 +174,7 @@ git push origin master
         一旦作業を退避させた後は、未コミット作業がなくなるため、先の方法を使えばいい。
       </div>
     </div>
+
     <div>
       <h2>他の人と、更新内容がぶつかってしまった時の対処</h2>
     
